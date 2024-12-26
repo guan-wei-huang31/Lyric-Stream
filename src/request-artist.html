@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request a New Artist</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #202b38;
+        color: white;
+      }
+
+      form {
+        max-width: 600px;
+        margin: auto;
+      }
+
+      input,
+      textarea,
+      select,
+      button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        border: none;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .dynamic-inputs {
+        margin-top: 10px;
+      }
+
+      .dynamic-inputs input {
+        margin-bottom: 5px;
+      }
+
+      .add-button {
+        background-color: #28a745;
+        color: white;
+        margin: 10px 0;
+      }
+
+      .add-button:hover {
+        background-color: #218838;
+      }
+
+      .checkbox-container input {
+        width: 5%;
+        margin-left: auto;
+      }
+
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      #back-home a {
+        color: white;
+        text-decoration: none;
+      }
+
+      #back-home a:hover {
+        color: red;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Request a New Artist</h1>
+    <form method="post" action="https://httpbin.org/post">
+      <!-- Artist Name -->
+      <label for="artist-name">Artist Name:</label>
+      <input
+        type="text"
+        id="artist-name"
+        name="artist-name"
+        placeholder="Enter artist's name"
+        required
+      />
+
+      <!-- Music Genre -->
+      <label for="music-genre">Music Genre:</label>
+      <input
+        list="genres"
+        id="music-genre"
+        name="music-genre"
+        placeholder="Choose or enter a genre"
+        required
+      />
+      <datalist id="genres">
+        <option value="Pop"></option>
+        <option value="Rock"></option>
+        <option value="Hip Hop"></option>
+        <option value="Electronic"></option>
+        <option value="Jazz"></option>
+        <option value="Classical"></option>
+        <option value="Country"></option>
+        <option value="R&B"></option>
+        <option value="Reggae"></option>
+        <option value="Folk"></option>
+      </datalist>
+
+      <!-- Social Media URLs -->
+      <label for="social-media">Social Media URLs:</label>
+      <input
+        type="url"
+        id="social-media"
+        name="social-media"
+        placeholder="Enter social media URL (e.g., https://twitter.com/artist)"
+        multiple
+        required
+      />
+
+      <!-- Example Songs and Videos -->
+      <label for="songs">Example Songs and Videos:</label>
+      <div class="dynamic-inputs" id="songs-container">
+        <input
+          type="url"
+          id="songs"
+          name="songs[]"
+          placeholder="Enter a song/video URL (e.g., https://youtube.com/artist-song)"
+        />
+      </div>
+      <button type="button" class="add-button" id="add-song">Add Another URL</button>
+
+      <!-- Explicit Lyrics -->
+      <div class="checkbox-container">
+        <input type="checkbox" id="explicit-lyrics" name="explicit-lyrics" />
+        <label for="explicit-lyrics">Includes Explicit Lyrics</label>
+      </div>
+
+      <!-- Artist Reason -->
+      <label for="artist-reason">Why do you want this artist added?</label>
+      <textarea
+        id="artist-reason"
+        name="artist-reason"
+        placeholder="Tell us why you love this artist..."
+        rows="5"
+        required
+      ></textarea>
+
+      <!-- Submit -->
+      <button type="submit">Submit Request</button>
+    </form>
+    <nav id="back-home">
+      <a href="index.html">Back to Main Page</a>
+    </nav>
+
+    <script>
+      // Add dynamic input fields for songs/videos
+      document.getElementById("add-song").addEventListener("click", function () {
+        const container = document.getElementById("songs-container");
+        const input = document.createElement("input");
+        input.type = "url";
+        input.name = "songs[]";
+        input.placeholder = "Enter another song/video URL";
+        container.appendChild(input);
+      });
+    </script>
+  </body>
+</html>
