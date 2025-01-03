@@ -41,6 +41,9 @@ Lyric Stream is a responsive and feature-rich web application designed to provid
   ```
   npm run dev
   ```
+
+# Demo
+![Demo](picture/demo.png)
   
 # Future Enhancements
 - Implement server-side data storage for dynamic artist and song management.
